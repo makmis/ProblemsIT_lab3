@@ -6,3 +6,6 @@
 Комнады настройки оформить в виде сценария командного интерпретатора.
 
 Выполнение:
+ 1. Создаем пользователя системы webmaster: useradd webmaster и задаем ему пароль: passwd webmaster.
+ 2. создаем SELinux пользователя: webadmin_u: semanage user -a -R "staff_r system_r webadm_r" -L s0 -r s0 webadmin_u. При создании пользователя, возникла проблема, программа semanage не усталновлена, устанавливаем: apt-get install policycoreutils.
+ 3.
