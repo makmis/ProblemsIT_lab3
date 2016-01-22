@@ -7,5 +7,11 @@
 
 Выполнение:
  1. Создаем пользователя системы webmaster: useradd webmaster и задаем ему пароль: passwd webmaster.
- 2. создаем SELinux пользователя: webadmin_u: semanage user -a -R "staff_r system_r webadm_r" -L s0 -r s0 webadmin_u. При создании пользователя, возникла проблема, программа semanage не усталновлена, устанавливаем: apt-get install policycoreutils.
- 3.
+ 2. Cоздаем SELinux пользователя: webadmin_u: semanage user -a -R "staff_r system_r webadm_r" -L s0 -r s0 webadmin_u.
+	// При создании пользователя, возникла проблема, программа semanage не усталновлена, устанавливаем: apt-get install policycoreutils. В итоге Selinux на ubuntu находиться в Disabled и не запускается с использованием команд. Посмотрев еще раз внимательно задание, в котром указано, что нужно выполнить в Centos7, скачиваю, устанавливаю его и выполняю все действия заново 1-2.
+ 3. Связываем пользователя linux и Selinux: semanage login -a -r s0 -s webadmin_u webmaster.
+ 4. Копируем шаблон staff_u в webadmin_u: cp /etc/selinux/targeted/contexts/users/staff_u /etc/selinux/targeted/contexts/users/webadmin_u
+ 5. Добавляем правило для sudo: echo 'webmaster ALL=(ALL) TYPE=webadm_t ROLE=webadm_r ALL' > /etc/sudoers.d/webmaster
+ 6. Проверяем, ок.
+
+ 
