@@ -6,7 +6,6 @@ useradd webmaster
 #setting password
 passwd webmaster
 
-
 # create SELinux user
 semanage user -a -R "staff_r system_r webadm_r" -L s0 -r s0 webadmin_u
 
