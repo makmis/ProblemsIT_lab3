@@ -10,7 +10,7 @@ passwd webmaster
 semanage user -a -R "staff_r system_r webadm_r" -L s0 -r s0 webadmin_u
 
 #link SELinux user and system user
-semanage login -a -r s0 -s webadm_u webmaster
+semanage login -a -r s0 -s webadmin_u webmaster
 
 #copy template
 cp /etc/selinux/targeted/contexts/users/staff_u /etc/selinux/targeted/contexts/users/webadmin_u
