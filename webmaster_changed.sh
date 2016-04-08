@@ -4,6 +4,8 @@
 useradd webmaster
 #устаналиваем пароль новому пользователю
 passwd webmaster
+#ecтанавливаем semanage
+yum -y install policycoreutils-python > /dev/null
 #сопоставляем роль webadm_r с SElinux пользователю staff_u
 semanage user -m -R "staff_r system_r webadm_r" staff_u
 #сопоставим пользователя Linux с пользователем SElinux 
